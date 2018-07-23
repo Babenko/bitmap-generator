@@ -11,8 +11,8 @@ node {
       sh 'pwd'
       sh 'echo $PATH'
       sh 'echo $JAVA_HOME'
-      sh '/home/babenkosemen/.sdkman/candidates/maven/current/bin/mvn -v'
-      sh '/home/babenkosemen/.sdkman/candidates/maven/current/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+      sh 'mvn -v'
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
     }
   }
 }
