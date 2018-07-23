@@ -9,7 +9,7 @@ node {
     withSonarQubeEnv('Sonar') {
       // requires SonarQube Scanner for Maven 3.2+
       
-      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.branch=${BRANCH_NAME}'
+      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.branch=${BRANCH_NAME} -Dsonar.analysis.mode=preview'
     }
   }
 }
