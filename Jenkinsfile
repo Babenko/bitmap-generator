@@ -9,7 +9,7 @@ node {
     withSonarQubeEnv('Sonar') {
       // requires SonarQube Scanner for Maven 3.2+
       
-      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.branch=${BRANCH_NAME} -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$PULL_REQUEST_ID -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=c2c359c342e9dc5c48bd41d70407a800ea7a3654'
+      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.branch=jenkins-branch -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=1 -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=c2c359c342e9dc5c48bd41d70407a800ea7a3654'
     }
   }
 }
