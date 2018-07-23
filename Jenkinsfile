@@ -8,14 +8,8 @@ node {
   stage('SonarQube analysis') {
     withSonarQubeEnv('Sonar') {
       // requires SonarQube Scanner for Maven 3.2+
-      //sh 'export JAVA_HOME=/home/babenkosemen/.sdkman/candidates/java/current/bin'
       
-      sh 'export PATH=$PATH:/home/babenkosemen/.sdkman/candidates/java/current/bin'
-      sh 'pwd'
-      sh 'echo $PATH'
-      sh 'echo $JAVA_HOME'
-      sh 'mvn -v'
-      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.branch=${BRANCH_NAME}'
     }
   }
 }
