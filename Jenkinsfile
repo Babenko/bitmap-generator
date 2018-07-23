@@ -1,8 +1,5 @@
 
 node {
-  stage('SCM') {
-    git 'https://github.com/foo/bar.git'
-  }
   stage('SonarQube analysis') {
     withSonarQubeEnv('Sonar') {
       // requires SonarQube Scanner for Maven 3.2+
