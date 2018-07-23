@@ -15,7 +15,7 @@ node {
       sh 'echo $PATH'
       sh 'echo $JAVA_HOME'
       sh 'mvn -v'
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+      sh 'mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
     }
   }
 }
