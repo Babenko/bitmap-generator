@@ -2,8 +2,8 @@
 node {
   //env.JAVA_HOME = "${tool 'JDK8'}"
   //env.MAVEN_HOME = "${tool 'maven'}"
-  env.JAVA_HOME="${tool 'JDK8'}"
-  env.MAVEN_HOME="${tool 'Maven3'}"
+  env.JAVA_HOME="${tool 'JDK'}"
+  env.MAVEN_HOME="${tool 'maven'}"
   env.PATH="${env.JAVA_HOME}/bin:${env.MAVEN_HOME}/bin:${env.PATH}"
   stage('SonarQube analysis') {
     withSonarQubeEnv('Sonar') {
