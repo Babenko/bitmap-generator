@@ -1,2 +1,2 @@
 # bitmap-generator
-Jenkins-test
+Jenkins test
