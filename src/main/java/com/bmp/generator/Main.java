@@ -15,6 +15,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         int a = 3;
+        int b = 5;
         ImageFactory imageFactory = new BitmapFactory();
 
         byte[] source = imageFactory.getImageBuilder().withWidth(2).withHeight(2).withValue(1).build().getSource();
