@@ -5,6 +5,7 @@ import com.bmp.generator.factory.ImageFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author Sem Babenko.
@@ -13,7 +14,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-
+        int a = 3;
         ImageFactory imageFactory = new BitmapFactory();
 
         byte[] source = imageFactory.getImageBuilder().withWidth(2).withHeight(2).withValue(1).build().getSource();
