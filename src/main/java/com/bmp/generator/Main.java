@@ -5,6 +5,7 @@ import com.bmp.generator.factory.ImageFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author Sem Babenko.
