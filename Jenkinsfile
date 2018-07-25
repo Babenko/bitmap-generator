@@ -12,7 +12,7 @@ node {
         
         def data = readJSON text: response.content
         data.each {
-          sh "echo ${it.head.ref}"
+          sh "echo ${it.head.ref} ${it.number}"
         }
         sh "mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=${env.CHANGE_ID} -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=${env.GITHUB_TOKEN}"
       }
