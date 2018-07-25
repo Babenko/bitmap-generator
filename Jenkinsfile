@@ -10,7 +10,7 @@ node {
         // requires SonarQube Scanner for Maven 3.2+
         def response = httpRequest 'https://api.github.com/users/defunkt'
         
-        def data = readJSON text: response
+        def data = readJSON text: response.content
         
         println("Status: "+response.status)
         println("Content: "+response.content)
