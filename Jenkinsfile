@@ -14,7 +14,7 @@ node {
         
 
         sh "echo ${BRANCH_NAME}"
-          sh "echo ${env.CHANGE_ID}"
+          sh "echo ${env.BRANCH_NAME}"
         sh "echo ${env.SONAR_ENDPOINT}" 
         sh "mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=${env.CHANGE_ID} -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=${env.GITHUB_TOKEN}"
       }
