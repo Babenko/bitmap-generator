@@ -11,11 +11,9 @@ node {
         def response = httpRequest url: 'https://api.github.com/repos/Babenko/bitmap-generator/pulls', customHeaders: [[name: 'Authorization', value: "Basic ${env.GITHUB_TOKEN}"]]
         
         def data = readJSON text: response.content
-        
-          sh "echo ${data}"
-        sh "echo ${BRANCH_NAME}"
-          sh "echo ${env.BRANCH_NAME}"
-        sh "echo ${env.SONAR_ENDPOINT}" 
+        data.each {
+          sh "echo ${it.head.label}"
+        }
         sh "mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=${env.CHANGE_ID} -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=${env.GITHUB_TOKEN}"
       }
     }
