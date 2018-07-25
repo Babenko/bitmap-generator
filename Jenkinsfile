@@ -8,11 +8,11 @@ node {
     withSonarQubeEnv('Sonar') {
         withCredentials([[$class : 'StringBinding', credentialsId   : 'github', variable: 'GITHUB_TOKEN',]]) {
         // requires SonarQube Scanner for Maven 3.2+
-        def response = httpRequest 'https://api.github.com/users/defunkt'
+        def response = httpRequest url: 'https://api.github.com/repos/Babenko/bitmap-generator/pulls', customHeaders: [[name: 'Authorization', value: "Basic ${env.GITHUB_TOKEN}"]]
         
         def data = readJSON text: response.content
         
-
+          sh "echo ${data}"
         sh "echo ${BRANCH_NAME}"
           sh "echo ${env.BRANCH_NAME}"
         sh "echo ${env.SONAR_ENDPOINT}" 
