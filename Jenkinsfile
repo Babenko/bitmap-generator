@@ -9,6 +9,10 @@ node {
     withSonarQubeEnv('Sonar') {
         withCredentials([[$class : 'StringBinding', credentialsId   : 'github', variable: 'GITHUB_TOKEN',]]) {
         // requires SonarQube Scanner for Maven 3.2+
+        def response = httpRequest 'https://api.github.com/users/defunkt'
+        println("Status: "+response.status)
+        println("Content: "+response.content)
+
         sh "echo ${env.SONAR_ENDPOINT}" 
         sh "mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=${env.CHANGE_ID} -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=${env.GITHUB_TOKEN}"
       }
