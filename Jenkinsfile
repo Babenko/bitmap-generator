@@ -1,3 +1,4 @@
+import groovy.json.JsonSlurperClassic
 
 node {
   checkout scm
@@ -10,9 +11,10 @@ node {
         withCredentials([[$class : 'StringBinding', credentialsId   : 'github', variable: 'GITHUB_TOKEN',]]) {
         // requires SonarQube Scanner for Maven 3.2+
         def response = httpRequest 'https://api.github.com/users/defunkt'
+        def data = new JsonSlurperClassic().parseText(response)
         println("Status: "+response.status)
         println("Content: "+response.content)
-
+        sh "echo ${data.login}"
         sh "echo ${env.SONAR_ENDPOINT}" 
         sh "mvn clean package org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=${env.CHANGE_ID} -Dsonar.github.repository=Babenko/bitmap-generator -Dsonar.github.oauth=${env.GITHUB_TOKEN}"
       }
