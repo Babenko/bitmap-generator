@@ -1,5 +1,3 @@
-import groovy.json.JsonSlurperClassic
-
 node {
   checkout scm
   env.JAVA_HOME="${tool 'JDK'}"
@@ -11,7 +9,9 @@ node {
         withCredentials([[$class : 'StringBinding', credentialsId   : 'github', variable: 'GITHUB_TOKEN',]]) {
         // requires SonarQube Scanner for Maven 3.2+
         def response = httpRequest 'https://api.github.com/users/defunkt'
-        def data = new JsonSlurperClassic().parseText(response)
+        
+        def data = readJSON text: response
+        
         println("Status: "+response.status)
         println("Content: "+response.content)
         sh "echo ${data.login}"
